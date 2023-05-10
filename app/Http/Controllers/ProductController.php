@@ -16,7 +16,7 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         $imageName = time().'.'.$request->file('image')->getClientOriginalExtension();
-        $request->image->move(public_path('/images/avatars'), $imageName);
+        $request->image->move(public_path('/images'), $imageName);
 
         $request['image'] = $imageName;
         $product = Product::create($request->post());
@@ -35,7 +35,7 @@ class ProductController extends Controller
     {
         if($request->file('image')){
             $imageName = time().'.'.$request->file('image')->getClientOriginalExtension();
-            $request->image->move(public_path('/images/avatars'), $imageName);
+            $request->image->move(public_path('/images'), $imageName);
             $request['image'] = $imageName;
         }
         
